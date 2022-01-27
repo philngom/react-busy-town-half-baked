@@ -5,13 +5,16 @@ import TrafficLight from './TrafficLight';
 
 function App() {
   const [lightColor, setLightColor] = useState('red');
-  // lizardSize should be a number that starts out as 10
-  // alienSize should be a number that starts out as 10
   const [lizardSize, setLizardSize] = useState(10);
   const [alienSize, setAlienSize] = useState(10);
+  const [vehicleArray, setVehicleArray] = useState(['car', 'truck', 'truck', 'car', 'bus']);
   // traffic is complicated. It should be an array of strings that starts out as ['car', 'truck']
   function handleLightColorClick(e) {
     setLightColor(`${e.target.innerHTML.toLowerCase()}`);
+  }
+
+  function handleVehicleButtonClick(e) {
+    setLightColor([...vehicleArray, `${e.target.innerHTML.toLowerCase()}`]);
   }
 
   return (
@@ -49,13 +52,13 @@ function App() {
       <div className='buttons'>
         {/* This part is weird */}
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'car' to the end */}
-        <button>Car</button>
+        <button onClick={ handleVehicleButtonClick }>Car</button>
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'bus' to the end */}
-        <button>Bus</button>
+        <button onClick={ handleVehicleButtonClick }>Bus</button>
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'truck' to the end */}
-        <button>Truck</button>
+        <button onClick={ handleVehicleButtonClick }>Truck</button>
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'motorcycle' to the end */}
-        <button>Motorcycle</button>
+        <button onClick={ handleVehicleButtonClick }>Motorcycle</button>
       </div>
 
     </div>
