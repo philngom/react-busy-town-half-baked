@@ -1,15 +1,22 @@
 import './App.css';
+import { useState } from 'react';
 import VehicleList from './VehicleList';
 import TrafficLight from './TrafficLight';
 
 function App() {
   // track the following state with a few useState hooks:
   // lightColor should be a string that starts out as 'red'
+  const [lightColor, setLightColor] = useState('red');
   // lizardSize should be a number that starts out as 10
   // alienSize should be a number that starts out as 10
   // traffic is complicated. It should be an array of strings that starts out as ['car', 'truck']
-
+  function handleLightColorClick(e) {
+    // console.log(e.target.innerHTML.toLowerCase());
+    setLightColor(`${e.target.innerHTML.toLowerCase()}`);
+  }
+  console.log(lightColor);
   return (
+
     <div className="App">
       <div className="fight">
         <div className="monster">
@@ -33,19 +40,20 @@ function App() {
           </div>
         </div>
       </div>
+
       <TrafficLight color={lightColor} />
       <div className="buttons">
         {/* when you click this button, the color of the light in state should be set to 'red' */}
-        <button>Red</button>
+        <button onClick={ handleLightColorClick }>Red</button>
         {/* when you click this button, the color of the light in state should be set to 'yellow' */}
-        <button>Yellow</button>
+        <button onClick={ handleLightColorClick }>Yellow</button>
         {/* when you click this button, the color of the light in state should be set to 'green' */}
-        <button>Green</button>
+        <button onClick={ handleLightColorClick }>Green</button>
       </div>
-      {/* 
+      {/*
       the VehicleList component takes in one prop: vehicles.
       This prop should be an array of strings like ['car', 'truck', 'truck', 'car', 'bus'].
-      Do you have something like that in state that you could pass as a vehicles prop? 
+      Do you have something like that in state that you could pass as a vehicles prop?
       */}
       <VehicleList />
       <div className='buttons'>
